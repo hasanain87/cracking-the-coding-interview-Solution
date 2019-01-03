@@ -65,7 +65,7 @@ public class FindMaxNum {
 	
    public static void main(String[] args) {
       
-     
+             int   Sortedarr [] ={1,2,3,4,5,6,7,8,9,10,11,15,19};
 	      int length=arr.length-1;
 	      System.out.println ("the max number in the array is  "maxNum(arr,length));
 	      System.out.println("2 to the power 4 is "+pow2(4));
