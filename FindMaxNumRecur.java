@@ -38,6 +38,20 @@ public class FindMaxNum {
 	      }
 	
 	
+  public static int partialSum (int[] arr,int start,int end){
+        
+		if(start >= end) return 0;  // return 0 to end 
+		  else
+		      // the index  here is start that has incremented
+		  return arr[start]+partialSum(arr,start+1,end);       
+     }
+   
+   public static int  sum(int [] arr ){
+          // helper function
+           return partialSum(arr,0,arr.length);
+          }
+	
+	
 	
    public static void main(String[] args) {
       
@@ -46,5 +60,7 @@ public class FindMaxNum {
 	      System.out.println ("the max number in the array is  "maxNum(arr,length));
 	      System.out.println("2 to the power 4 is "+pow2(4));
 	      System.out.println("Sum of nums 1 to 1oo is "+SumAll(100));
+	      System.out.println("Sum of array"+sum(arr));
+	      System.out.println("Partial sum of array"+partialSum(arr,0,2));
    }
 }
