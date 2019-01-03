@@ -51,6 +51,16 @@ public class FindMaxNum {
            return partialSum(arr,0,arr.length);
           }
 	
+	public static int bs (int[] arr,int val,int start,int end){
+        
+		if(start >= end) return -1;  // return 0 to end 
+		  int mid=(start+end)/2;
+		  if(arr[mid]> val) return  bs(arr,val,start,mid-1);
+		  else if(arr[mid]== val) return mid;
+		  else 
+		     return  bs(arr,val,mid+1,end);
+     }
+	      
 	
 	
    public static void main(String[] args) {
@@ -62,5 +72,6 @@ public class FindMaxNum {
 	      System.out.println("Sum of nums 1 to 1oo is "+SumAll(100));
 	      System.out.println("Sum of array"+sum(arr));
 	      System.out.println("Partial sum of array"+partialSum(arr,0,2));
+	     System.out.println("10 is at index   "+bs(Sortedarr,10,0,Sortedarr.length-1));
    }
 }
