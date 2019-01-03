@@ -46,6 +46,20 @@ public class FindMaxNum {
 		  return arr[start]+partialSum(arr,start+1,end);       
      }
    
+           static int temp;
+	   public static void reverse1(int [] arr,int start, int end){
+		    
+		      if(start >= end ) return  ;
+		      
+		           temp =arr[start];
+		           arr[start]=arr[end];
+		           arr[end]=temp;
+		          reverse1(arr,start+1,end-1);		      
+      }
+ 	
+	
+	
+	
    public static int  sum(int [] arr ){
           // helper function
            return partialSum(arr,0,arr.length);
@@ -73,5 +87,10 @@ public class FindMaxNum {
 	      System.out.println("Sum of array"+sum(arr));
 	      System.out.println("Partial sum of array"+partialSum(arr,0,2));
 	     System.out.println("10 is at index   "+bs(Sortedarr,10,0,Sortedarr.length-1));
+	   
+	     int   Sortedarr [] ={1,2,3,4};  
+	    reverse1(Sortedarr,0,Sortedarr.length-1);
+
+	    
    }
 }
