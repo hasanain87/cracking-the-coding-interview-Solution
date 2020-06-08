@@ -1,0 +1,74 @@
+	static void sortBySchoolById1(ArrayList<Student> students) {
+		
+		class ByIdComp implements Comparator<Student> {
+
+			@Override
+			public int compare(Student s1, Student s2) {
+				return s1.getId() - s2.getId();
+			}
+			
+		};
+    Collections.sort(students, new ByIdComp());
+		
+		// anonymous classes are often more appropriate for single use simple comparators:
+		Collections.sort(students, new Comparator<Student>() {
+
+			@Override
+			public int compare(Student s1, Student s2) {
+				return s1.getSchool().compareTo(s2.getSchool());
+			}
+			
+		});
+	}
+
+	
+	static void sortBySchoolById2(ArrayList<Student> students) {
+		Collections.sort(students, new Comparator<Student>() {
+
+			@Override
+			public int compare(Student s1, Student s2) {
+				int bySchool = s1.getSchool().compareTo(s2.getSchool());
+				return bySchool == 0 ? s1.getId() - s2.getId() : bySchool;
+			}
+			
+		});
+	}
+	
+  /**
+	 * Runtime analysis:
+	 * 
+	 *  To put/get everything into/from the buckets: O(n).
+	 *  k buckets -> bucket size ~ n/k.
+	 *  To sort all buckets: O(k * (n/k) * lg(n/k)) = O(n lg(n/k))
+	 *  -> O(n lg(n/k)) runtime. More efficient for larger k.
+	 *
+	 * Space analysis:
+	 *  All buckets together have size O(n)
+	 *  -> O(n) extra space
+	 */
+	static void sortBySchoolById3(ArrayList<Student> students) {
+		final int NUM_SCHOOLS = 7;
+		ArrayList<Student>[] buckets = (ArrayList<Student>[]) new ArrayList[NUM_SCHOOLS];
+		// init the buckets
+		for (int i = 0; i < NUM_SCHOOLS; i++) {
+			buckets[i] = new ArrayList<Student>();
+		}
+		// populate the buckets from the list
+		for (Student s : students) {
+			buckets[schoolToIndex(s.getSchool())].add(s);
+		}
+		// clear original list
+		students.clear();
+		// sort each bucket and then add it to original list
+		for (ArrayList<Student> list : buckets) {
+			Collections.sort(list, new Comparator<Student>() {
+
+				@Override
+				public int compare(Student s1, Student s2) {
+					return s1.getId() - s2.getId();
+				}
+
+			});
+			students.addAll(list);
+		}
+	}
