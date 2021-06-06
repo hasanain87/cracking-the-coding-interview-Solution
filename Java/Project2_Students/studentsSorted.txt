@@ -1,0 +1,9 @@
+id:  43901450  name :Jamar Gosman  School:   UCB
+id:  43901452  name :Jam Gosn  School:   UCB
+id:  28152842  name :Jonathan Prindle  School:   UCD
+id:  66737716  name :Gertrude Goldyn  School:   UCLA
+id:  99389900  name :Marina Nunmaker  School:   UCLA
+id:  59498002  name :Malinda Whaite  School:   UCM
+id:  97606808  name :Maricela Facemire  School:   UCSD
+id:  65030459  name :Jackson Meredith  School:   UCSF
+id:  66620395  name :Zoila Saa  School:   UCSF
